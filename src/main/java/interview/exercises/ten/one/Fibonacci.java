@@ -1,4 +1,4 @@
-package interview.exercises.ten;
+package interview.exercises.ten.one;
 
 /**
  * 求菲波那契数列的第 n 项，n <= 39。

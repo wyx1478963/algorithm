@@ -1,4 +1,4 @@
-package interview.exercises.eleven;
+package interview.exercises.ten.two;
 
 import org.junit.Test;
 
