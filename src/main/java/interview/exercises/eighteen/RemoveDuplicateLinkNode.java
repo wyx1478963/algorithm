@@ -45,13 +45,27 @@ public class RemoveDuplicateLinkNode {
             if (isDelete) {
                 p.next = null;
                 p = p1;
-            }else {
+            } else {
                 headP.next = p;
                 headP = p;
                 p = p1;
             }
         }
         return head.next;
+    }
+
+    public LinkNode deleteDuplication(LinkNode pHead) {
+        if (pHead == null || pHead.next == null)
+            return pHead;
+        LinkNode next = pHead.next;
+        if (pHead.val == next.val) {
+            while (next != null && pHead.val == next.val)
+                next = next.next;
+            return deleteDuplication(next);
+        } else {
+            pHead.next = deleteDuplication(pHead.next);
+            return pHead;
+        }
     }
 
     public static LinkNode constructLinkNode(int[] nodes) {
@@ -66,7 +80,7 @@ public class RemoveDuplicateLinkNode {
         return head.next;
     }
 
-    public static void printLinkNode(LinkNode head){
+    public static void printLinkNode(LinkNode head) {
         LinkNode p = head;
         while (p != null) {
             System.out.println(p.val);
@@ -75,7 +89,7 @@ public class RemoveDuplicateLinkNode {
     }
 
     public static void main(String[] args) {
-        LinkNode head = constructLinkNode(new int[]{1,2,3,3,3,3,4,5});
+        LinkNode head = constructLinkNode(new int[]{1, 2, 3, 3, 3, 3, 4, 5});
         printLinkNode(head);
         System.out.println("华丽分割线");
         printLinkNode(removeDuplicate(head));
